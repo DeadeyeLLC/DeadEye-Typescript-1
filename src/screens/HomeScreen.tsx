@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Image,
-  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -13,7 +12,7 @@ import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
 
 export default class HomeScreen extends React.Component {
-  static navigationOptions = {
+  static navigationOptions: {header: any} = {
     header: null,
   };
 
@@ -25,8 +24,8 @@ export default class HomeScreen extends React.Component {
             <Image
               source={
                 __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
+                  ? require('../../assets/images/robot-dev.png')
+                  : require('../../assets/images/robot-prod.png')
               }
               style={styles.welcomeImage}
             />
@@ -34,7 +33,7 @@ export default class HomeScreen extends React.Component {
 
           <View style={styles.getStartedContainer}>
             {this._maybeRenderDevelopmentModeWarning()}
-
+            
             <Text style={styles.getStartedText}>Get started by opening</Text>
 
             <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
@@ -98,7 +97,7 @@ export default class HomeScreen extends React.Component {
   };
 }
 
-const styles = StyleSheet.create({
+const styles: any= StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -145,44 +144,5 @@ const styles = StyleSheet.create({
     color: 'rgba(96,100,109, 1)',
     lineHeight: 24,
     textAlign: 'center',
-  },
-  tabBarInfoContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: { height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 20,
-      },
-    }),
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
-    paddingVertical: 20,
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    textAlign: 'center',
-  },
-  navigationFilename: {
-    marginTop: 5,
-  },
-  helpContainer: {
-    marginTop: 15,
-    alignItems: 'center',
-  },
-  helpLink: {
-    paddingVertical: 15,
-  },
-  helpLinkText: {
-    fontSize: 14,
-    color: '#2e78b7',
   },
 });
